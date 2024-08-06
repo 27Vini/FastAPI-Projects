@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "projetoapi"
+version = "0.1.0"
+description = ""
+authors = ["vini"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.112.0"
+uvicorn = "^0.30.5"
+sqlalchemy = "^2.0.32"
+psycopg2-binary = "^2.9.9"
+pytest = "^8.3.2"
+alembic = "^1.13.2"
+python-decouple = "^3.8"
+httpx = "^0.27.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
