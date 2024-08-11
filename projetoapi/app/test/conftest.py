@@ -40,6 +40,7 @@ def product_on_db(db_session):
     category = CategoryModel(name='Carro',slug='carro')
     db_session.add(category)
     db_session.commit()
+    db_session.refresh(category)
     product = ProductModel(
         name='Camisa Abidas',
         slug='camisa-abidas',
@@ -52,7 +53,6 @@ def product_on_db(db_session):
 
     yield product
 
-    db_session.refresh(product)
     db_session.delete(product)
     db_session.delete(category)
     db_session.commit()
