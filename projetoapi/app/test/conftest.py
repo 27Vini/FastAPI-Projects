@@ -66,9 +66,9 @@ def products_on_db(db_session):
     db_session.refresh(category)
     products = [
         ProductModel(name="Camisa Mike",slug='camisa-mike',price=100,stock=10,category_id=category.id),
-        ProductModel(name="Moletom Mike",slug='moletom-mike',price=100,stock=10,category_id=category.id),
-        ProductModel(name="Camiseta Mike",slug='camiseta-mike',price=100,stock=10,category_id=category.id),
-        ProductModel(name="Short Mike",slug='short-mike',price=100,stock=10,category_id=category.id),
+        ProductModel(name="Moletom Mike",slug='moletom',price=100,stock=10,category_id=category.id),
+        ProductModel(name="Camiseta",slug='camiseta-mike',price=100,stock=10,category_id=category.id),
+        ProductModel(name="Short",slug='short',price=100,stock=10,category_id=category.id),
     ]
 
     for product in products:

@@ -1,6 +1,7 @@
 from app.db.models import Product as ProductModel
 from app.schemas.product import Product,ProductOutput
 from sqlalchemy.orm import Session
+from sqlalchemy import or_
 from app.db.models import Category as CategoryModel
 from app.schemas.product import Product
 from fastapi import status
@@ -40,8 +41,13 @@ class ProductUseCases:
         self.db_session.delete(product_on_db)
         self.db_session.commit()
 
-    def list_products(self):
-        products_on_db = self.db_session.query(ProductModel).all()
+    def list_products(self, search : str = ''):
+        products_on_db = self.db_session.query(ProductModel).filter(
+            or_(
+                ProductModel.name.ilike(f'%{search}%'),
+                ProductModel.slug.ilike(f'%{search}%')
+            )
+        ).all()
         
         products = [
             self._serialize_product(product_on_db)
